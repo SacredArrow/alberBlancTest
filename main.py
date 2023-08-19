@@ -5,6 +5,7 @@ import time
 from websockets.sync.client import connect
 
 n_threads = 5
+n_seconds = 60
 
 
 def run_thread(n):
@@ -13,7 +14,7 @@ def run_thread(n):
             f.write('arrival_time,event_time,updateId\n')
             start_time = time.time()
             current_time = start_time
-            while current_time - start_time <= 60:
+            while current_time - start_time <= n_seconds:
                 message = websocket.recv()
                 current_time = time.time()
                 parsed = json.loads(message)

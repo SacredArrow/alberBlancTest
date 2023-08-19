@@ -6,11 +6,12 @@ from websockets.sync.client import connect
 
 n_threads = 5
 n_seconds = 60
-
+ws_url = 'wss://fstream.binance.com/ws/btcusdt@bookTicker'
+out_folder = './out_mp'
 
 def run_thread(n):
-    with connect("wss://fstream.binance.com/ws/btcusdt@bookTicker") as websocket:
-        with open(f'./out_mp/stream_{n}.csv', 'w') as f:
+    with connect(ws_url) as websocket:
+        with open(f'{out_folder}/stream_{n}.csv', 'w') as f:
             f.write('arrival_time,event_time,updateId\n')
             start_time = time.time()
             current_time = start_time

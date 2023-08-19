@@ -9,6 +9,7 @@ n_seconds = 60
 ws_url = 'wss://fstream.binance.com/ws/btcusdt@bookTicker'
 out_folder = './out_mp'
 
+
 def run_thread(n):
     with connect(ws_url) as websocket:
         with open(f'{out_folder}/stream_{n}.csv', 'w') as f:
